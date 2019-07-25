@@ -1,6 +1,6 @@
 /** @module */
 import '@pefish/js-node-assist'
-import BaseWalletHelper from '@pefish/js-coin-btc/lib/base/base_bitcoinjs_lib'
+import { BtcWallet } from '@pefish/js-coin-btc'
 import ErrorHelper from '@pefish/js-error'
 import bchaddr from 'bchaddrjs'
 
@@ -12,7 +12,7 @@ declare global {
   }
 }
 
-export default class Wallet extends BaseWalletHelper {
+export default class Wallet extends BtcWallet {
   decimals: number = 8;
   bitcoinLib: any
 
@@ -25,7 +25,7 @@ export default class Wallet extends BaseWalletHelper {
     if (network === `mainnet`) {
       return {
         messagePrefix: '\x18Bitcoin Cash Signed Message:\n',
-        bech32: 'bc',
+        bech32: 'bitcoincash',
         bip32: {
           public: 0x0488b21e,
           private: 0x0488ade4
